@@ -32,6 +32,14 @@ public class MovieService {
         return "Movie saved";
     }
 
+    public void updateMovie(long id, Movie newMovie){
+        Movie movie = movieRepository.findById(id).get();
+        movie.setTitle(newMovie.getTitle());
+        movie.setRating(newMovie.getRating());
+        movie.setDuration(newMovie.getDuration());
+        movieRepository.save(movie);
+    }
+
     public Movie getMovie() {
         return movie;
     }

@@ -18,9 +18,7 @@ import java.util.Optional;
 public class MovieController {
 
     @Autowired
-    MovieService movieService;
-
-
+    private MovieService movieService;
 
     @PostMapping
     public ResponseEntity<String> addMovie(@RequestBody Movie movie){
@@ -47,6 +45,12 @@ public class MovieController {
         }
 
         return new ResponseEntity<>(optionalMovie,HttpStatus.CREATED);
+    }
+
+    @PatchMapping(value="/{id}")
+    public ResponseEntity<String> updateMovie(@PathVariable long id, @RequestBody Movie movie){
+        movieService.updateMovie(id, movie);
+        return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
 }
