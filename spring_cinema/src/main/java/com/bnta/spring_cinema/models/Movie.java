@@ -1,11 +1,9 @@
 package com.bnta.spring_cinema.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "spring_cinema")
 public class Movie {
 
     @Id
@@ -14,11 +12,11 @@ public class Movie {
     @Column(name = "title")
     private String title;
     @Column(name = "rating")
-    private double rating;
+    private String rating;
     @Column(name = "duration")
-    private double duration;
+    private String duration;
 
-    public Movie(String title, double rating, double duration) {
+    public Movie(String title, String rating,String duration) {
         this.title = title;
         this.rating = rating;
         this.duration = duration;
@@ -43,19 +41,19 @@ public class Movie {
         this.title = title;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public double getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 }
